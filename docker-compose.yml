@@ -1,24 +1,14 @@
 version: '3'
 services:
-  # Tạo 3 máy chủ web từ cái khuôn Dockerfile ở Bước 2
-  web1:
-    build: .
-  web2:
-    build: .
-  web3:
+  # Chỉ định nghĩa 1 khuôn mẫu duy nhất tên là 'web'
+  web:
     build: .
 
-  # Tạo máy chủ Nginx làm Cân bằng tải
   load_balancer:
     image: nginx:alpine
-    # Gắn file cấu hình Nginx của bạn vào máy ảo
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-    # Mở port 8080 trên laptop của bạn, thông với port 80 của Nginx
     ports:
       - "8080:80"
-    # Đảm bảo 3 máy web phải chạy lên rồi thì Lễ tân mới làm việc
     depends_on:
-      - web1
-      - web2
-      - web3
+      - web
