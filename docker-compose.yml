@@ -1,9 +1,16 @@
 version: '3'
 services:
-  # Chỉ định nghĩa 1 khuôn mẫu duy nhất tên là 'web'
+  # 1. Thêm bộ não trung tâm Redis
+  redis-server:
+    image: redis:alpine
+
+  # 2. Cụm máy chủ Web
   web:
     build: .
+    depends_on:
+      - redis-server # Đảm bảo Redis khởi động xong thì Web mới được chạy
 
+  # 3. Lễ tân điều phối
   load_balancer:
     image: nginx:alpine
     volumes:

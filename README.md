@@ -40,3 +40,8 @@ docker-compose up --build -d --scale web=2
 ## Kiểm tra hệ thống sau khi giảm số lượng container web
 curl http://localhost:8080 => Xin chào! Request của bạn được xử lý bởi máy chủ: 677367c6434
 curl http://localhost:8080 => Xin chào! Request của bạn được xử lý bởi máy chủ: 2782ad71af88
+
+
+# REDIS
+
+
